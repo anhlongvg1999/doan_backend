@@ -33,27 +33,22 @@ const attributes = {
         allowNull: true,
         defaultValue: null
     },
-    newproduct: {
-        type: DataTypes.TINYINT(10),
-        allowNull: true,
-        default: 0
-    },
-    saleproduct: {
-        type: DataTypes.TINYINT(10),
-        allowNull: true,
-        default: 0
-    },
-    sellingproduct: {
-        type: DataTypes.TINYINT(10),
-        allowNull: true,
-        default: 0
-    },
     image: {
         type: DataTypes.STRING(255),
         allowNull: true,
         defaultValue: null
     },
+    sizeId:{
+        type: DataTypes.STRING(255),
+        allowNull: true,
+        defaultValue: null
+    },
     number: {
+        type: DataTypes.INTEGER(10),
+        allowNull: true,
+        defaultValue: null
+    },
+    quantity_sold :{
         type: DataTypes.INTEGER(10),
         allowNull: true,
         defaultValue: null

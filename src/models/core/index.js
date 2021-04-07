@@ -10,6 +10,7 @@ export {default as Transport} from './Transport';
 export {default as ProductManufacturer} from './ProductManufacturer';
 export {default as Blog} from './Blog';
 export {default as BlogCategory} from './BlogCategory';
+export {default as ProductSize} from './ProductSize';
 
 
 import { sequelize } from '../../connections';

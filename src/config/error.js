@@ -1,3 +1,5 @@
+import { ProductSize } from "../models/core";
+
 export const ERROR_MESSAGE = {
     LOGIN: {
         ERR_ACC: 'Tài khoản không tồn tại!',
@@ -15,5 +17,11 @@ export const ERROR_MESSAGE = {
         ERR_REQUIRE_INPUT:"Cần nhập đầy đủ dữ liệu",
         ERR_EXIST:'Tên nhà sản xuất đã tồn tại!',
         ERR_SEARCH_NOT_FOUND: 'Không tìm thấy',
+    },
+    PRODUCTSIZE:{
+        ERR_REQUIRE_INPUT:"Cần nhập đầy đủ dữ liệu",
+        ERR_EXIST:'size này đã tồn tại!',
+        ERR_SEARCH_NOT_FOUND: 'Không tìm thấy',
+        ERR_TYPE: 'Cần chọn kiểu cho size',
     }
 }
