@@ -46,6 +46,7 @@ class MidUser {
         return user;
     }
     async createUser(data){
+        console.log(data)
         if(!data.email || !data.password || ! data.firstname || !data.lastname || !data.mobile){
             throw new Error(ERROR_MESSAGE.USER.ERR_REQUIRE_INPUT);
         }

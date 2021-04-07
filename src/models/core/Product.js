@@ -3,7 +3,7 @@ import { sequelize } from '../../connections';
 import BaseModel from './BaseModel';
 export default class Product extends BaseModel {
     static association() {
-
+        
     }
 }
 const attributes = {
