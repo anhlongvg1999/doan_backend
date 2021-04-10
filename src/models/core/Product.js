@@ -1,9 +1,12 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../../connections';
 import BaseModel from './BaseModel';
+import ProductManufacturer from './ProductManufacturer';
+import ProductSize from './ProductSize';
 export default class Product extends BaseModel {
     static association() {
-        
+        Product.hasMany(ProductSize, {as: 'productsize', foreignKey: 'product_id', hooks: true, onUpdate : 'NO ACTION'})
+        Product.belongsTo(ProductManufacturer, {as: 'productmanufacturer', foreignKey: 'productmanufacturerId', hooks: true, onUpdate : 'NO ACTION'})
     }
 }
 const attributes = {
@@ -38,11 +41,6 @@ const attributes = {
         allowNull: true,
         defaultValue: null
     },
-    sizeId:{
-        type: DataTypes.STRING(255),
-        allowNull: true,
-        defaultValue: null
-    },
     number: {
         type: DataTypes.INTEGER(10),
         allowNull: true,
@@ -58,8 +56,8 @@ const attributes = {
         allowNull: true,
         defaultValue: null
     },
-    brandId: {
-        type: DataTypes.INTEGER(10),
+    description: {
+        type: DataTypes.STRING(255),
         allowNull: true,
         defaultValue: null
     },

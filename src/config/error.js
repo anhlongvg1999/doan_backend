@@ -18,7 +18,13 @@ export const ERROR_MESSAGE = {
         ERR_EXIST:'Tên nhà sản xuất đã tồn tại!',
         ERR_SEARCH_NOT_FOUND: 'Không tìm thấy',
     },
-    PRODUCTSIZE:{
+    SIZE:{
+        ERR_REQUIRE_INPUT:"Cần nhập đầy đủ dữ liệu",
+        ERR_EXIST:'size này đã tồn tại!',
+        ERR_SEARCH_NOT_FOUND: 'Không tìm thấy',
+        ERR_TYPE: 'Cần chọn kiểu cho size',
+    },
+    PRODUCT:{
         ERR_REQUIRE_INPUT:"Cần nhập đầy đủ dữ liệu",
         ERR_EXIST:'size này đã tồn tại!',
         ERR_SEARCH_NOT_FOUND: 'Không tìm thấy',

@@ -1,6 +1,7 @@
 import { sequelize } from '../../connections';
 import BaseModel from './BaseModel';
 import { DataTypes } from 'sequelize';
+import { Size } from '.';
 /**
  * Define UserDistributor Model
  * Thong tin tai khoan đăng nhập
@@ -12,7 +13,7 @@ import { DataTypes } from 'sequelize';
 export default class ProductSize extends BaseModel {
 
     static association() {
-        //Roles.hasMany(RolePermission, {as: 'permission', foreignKey: 'role_ids', hooks: true, onDelete: 'CASCADE', onUpdate : 'NO ACTION'});
+        ProductSize.belongsTo(Size, {as: 'size', foreignKey: 'size_id', hooks: true, onUpdate : 'NO ACTION'});
     }
 }
 
@@ -26,12 +27,12 @@ const attributes = {
         primaryKey: true,
         autoIncrement: true
     },
-    name: {
-        type: DataTypes.STRING(255),
+    product_id: {
+        type: DataTypes.INTEGER(10),
         allowNull: true,
         defaultValue: null
     },
-    type: {
+    size_id: {
         type: DataTypes.INTEGER(10),
         allowNull: true,
         defaultValue: null

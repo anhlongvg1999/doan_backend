@@ -5,7 +5,7 @@ import Product from './Product';
 
 export default class ProductManufacturer extends BaseModel {
     static association() {
-        ProductManufacturer.hasMany(Product,{as:'products',foreignKey:'id',hooks: true, onDelete: 'CASCADE', onUpdate : 'NO ACTION'})
+        ProductManufacturer.hasMany(Product,{as:'products',foreignKey:'id',hooks: true, onUpdate : 'NO ACTION'})
     }
 }
 const attributes = {

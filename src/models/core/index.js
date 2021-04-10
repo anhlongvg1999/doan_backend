@@ -11,6 +11,7 @@ export {default as ProductManufacturer} from './ProductManufacturer';
 export {default as Blog} from './Blog';
 export {default as BlogCategory} from './BlogCategory';
 export {default as ProductSize} from './ProductSize';
+export {default as Size} from './Size';
 
 
 import { sequelize } from '../../connections';
