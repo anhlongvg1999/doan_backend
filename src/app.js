@@ -4,7 +4,10 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import routes from './routes';
 
+
 const app = express();
+const multiparty = require('connect-multiparty')
+const MultipartyMiddleware = multiparty({uploadDir:'../images'})
 
 app.use(cors({
     credentials: true,

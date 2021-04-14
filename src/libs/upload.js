@@ -20,7 +20,6 @@ export const uploadMedia = (req, res) => {
             if (error) {
                 return reject(error)
             }
-
             let fileData = req.file;
             return resolve(fileData)
         });

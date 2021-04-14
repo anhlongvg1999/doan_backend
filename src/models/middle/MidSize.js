@@ -67,6 +67,33 @@ class MidSize{
             total: total || 0,
         }
     }
+    async getSizebyType(data){
+        let condition = {
+            
+        };
+        if(data.typesize){
+            condition.type = data.typesize
+        }
+        let { page, limit } = data;
+        page = page ? parseInt(page) : 1;
+        limit = limit ? parseInt(limit) : 10;
+        let [dataPost, total] = await Promise.all([
+            Size.findAll({
+                where:condition,
+                order: [["name", "DESC"]],
+                limit,
+                offset: (page - 1) * limit
+            }),
+            Size.count({
+                where:condition
+            })
+
+        ]);
+        return {
+            listSize: dataPost,
+            total: total || 0,
+        }
+    }
     async updateSize(data){
         if(!data.id){
             throw new Error(ERROR_MESSAGE.SIZE.ERR_SEARCH_NOT_FOUND);

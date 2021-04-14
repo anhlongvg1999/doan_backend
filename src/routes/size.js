@@ -7,6 +7,7 @@ let routerApp = new Router();
 routerApp.post('/createSize', Response(SizeController.createSize));
 routerApp.get('/deleteSize', Response(SizeController.deleteSize));
 routerApp.get('/getSize', Response(SizeController.getSize));
+routerApp.get('/getSizebyType', Response(SizeController.getSizebyType));
 routerApp.post('/updateSize', Response(SizeController.updateSize));
 
 export default routerApp;

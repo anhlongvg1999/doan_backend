@@ -13,6 +13,10 @@ class SizeController{
         let data = req.query;
         return await MidSize.getSize(data);
     }
+    async getSizebyType(req,res){
+        let data = req.query;
+        return await MidSize.getSizebyType(data);
+    }
     async updateSize(req,res){
         let data = req.body;
         return await MidSize.updateSize(data);

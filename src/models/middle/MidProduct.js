@@ -3,10 +3,11 @@ import { Product, ProductSize, Size, } from "../core";
 import { Op } from "sequelize";
 class MidProduct {
     async createProduct(data) {
+        console.log('datacreateproducttttttttttttttttttt',data)
         if (!data.name) {
             throw new Error(ERROR_MESSAGE.PRODUCT.ERR_REQUIRE_INPUT);
         }
-        const dataPro = await Product.findOne({ where: { name: { [Op.like]: `%${data.name}%` } } })
+        const dataPro = await Product.findOne({ where: { name: data.name }})
         if (dataPro) {
             throw new Error(ERROR_MESSAGE.PRODUCT.ERR_EXIST)
         }
