@@ -1,3 +1,4 @@
+import { max } from 'lodash';
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../../connections';
 import BaseModel from './BaseModel';
@@ -57,7 +58,7 @@ const attributes = {
         defaultValue: null
     },
     description: {
-        type: DataTypes.STRING(255),
+        type: DataTypes.STRING(8000),
         allowNull: true,
         defaultValue: null
     },

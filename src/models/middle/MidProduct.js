@@ -2,12 +2,13 @@ import { ERROR_MESSAGE } from "../../config/error";
 import { Product, ProductSize, Size, } from "../core";
 import { Op } from "sequelize";
 class MidProduct {
-    async createProduct(data) {
+    async createProduct(data,product_img) {
         console.log('datacreateproducttttttttttttttttttt',data)
-        if (!data.name) {
+        console.log('product_img',product_img)
+        if (!data.productcode) {
             throw new Error(ERROR_MESSAGE.PRODUCT.ERR_REQUIRE_INPUT);
         }
-        const dataPro = await Product.findOne({ where: { name: data.name }})
+        const dataPro = await Product.findOne({ where: { productcode: data.productcode }})
         if (dataPro) {
             throw new Error(ERROR_MESSAGE.PRODUCT.ERR_EXIST)
         }
@@ -16,7 +17,7 @@ class MidProduct {
             cost: data.cost,
             productmanufacturerId: data.productmanufacturerId,
             productcode: data.productcode,
-            image: data.image,
+            image: product_img,
             number: data.number,
             quantity_sold: 0,
             priceold: data.priceold,
@@ -25,10 +26,12 @@ class MidProduct {
         console.log('ok1')
         let objcreate = await Product.create(dataCreate);
         console.log("ok2")
-        await this.updateProductSize(objcreate.id, data.listSize)
+        await this.updateProductSize(objcreate.id, JSON.parse(data.listSize))
         return objcreate;
+        //return 1;
     }
-    async updateProduct(data) {
+    async updateProduct(data,encodeUIR) {
+        console.log('dataupdate',data)
         if (!data.id) {
             throw new Error(ERROR_MESSAGE.PRODUCT.ERR_SEARCH_NOT_FOUND);
         }
@@ -55,8 +58,8 @@ class MidProduct {
         if (data.productcode) {
             dataUpdate.productcode = data.productcode
         }
-        if (data.image) {
-            dataUpdate.image = data.image
+        if (encodeUIR) {
+            dataUpdate.image = encodeUIR
         }
         if (data.quantity_sold) {
             dataUpdate.quantity_sold = data.quantity_sold
@@ -67,10 +70,9 @@ class MidProduct {
         if (data.description) {
             dataUpdate.description = data.description
         }
-        if (data.listSize) {
-            await this.updateProductSize(data.id, data.listSize)
-        }
-        return objUpdate.update(dataUpdate)
+        console.log(dataUpdate)
+        await objUpdate.update(dataUpdate)
+        return await this.getproductbyid(data.id)
     }
     async deleteProduct(data){
         let objDelete = await Product.findOne({
@@ -94,6 +96,11 @@ class MidProduct {
         if (data.name) {
             condition.name = {
                 [Op.like]: `%${data.name}%`
+            }
+        }
+        if (data.productcode) {
+            condition.productcode = {
+                [Op.like]: `%${data.productcode}%`
             }
         }
         if (data.productmanufacturerId) {
@@ -162,6 +169,27 @@ class MidProduct {
     }
     addProductSize(data) {
         return ProductSize.create(data);
+    }
+    async getproductbyid(productid)
+    {
+        console.log('3333333333',productid)
+        let includeOpt = [
+            {
+                association: "productmanufacturer",
+                required: true,
+            },{
+                association:"productsize",
+                required: true,
+                include:{
+                    association:"size",
+                    required: false,
+                }
+            }
+        ];
+        return await Product.findOne({
+            where: { id : productid},
+            include : includeOpt
+        })
     }
 }
 export default new MidProduct()

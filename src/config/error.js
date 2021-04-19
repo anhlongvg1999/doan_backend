@@ -26,7 +26,7 @@ export const ERROR_MESSAGE = {
     },
     PRODUCT:{
         ERR_REQUIRE_INPUT:"Cần nhập đầy đủ dữ liệu",
-        ERR_EXIST:'size này đã tồn tại!',
+        ERR_EXIST:'Sản phẩm này đã tồn tại!',
         ERR_SEARCH_NOT_FOUND: 'Không tìm thấy',
         ERR_TYPE: 'Cần chọn kiểu cho size',
     }

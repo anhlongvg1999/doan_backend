@@ -4,6 +4,7 @@ import { Op } from "sequelize";
 
 class MidSize{
     async createSize(data){
+        console.log('datasizeeeee',data)
         if(!data.name){
             throw new Error(ERROR_MESSAGE.SIZE.ERR_REQUIRE_INPUT);
         }

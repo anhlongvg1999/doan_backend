@@ -1,5 +1,5 @@
 import path from 'path';
-import multer from 'multer';
+import multer from 'multer'; 
 
 export const uploadMedia = (req, res) => {
     return new Promise((resolve, reject) => {
