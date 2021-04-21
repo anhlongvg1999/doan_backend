@@ -19,6 +19,7 @@ class MidProduct {
             productcode: data.productcode,
             image: product_img,
             number: data.number,
+            sale: 0,
             quantity_sold: 0,
             priceold: data.priceold,
             description: data.description
@@ -29,6 +30,28 @@ class MidProduct {
         await this.updateProductSize(objcreate.id, JSON.parse(data.listSize))
         return objcreate;
         //return 1;
+    }
+    async updateSaleProduct(data){
+        console.log('dataupdate',data)
+        if (!data.id) {
+            throw new Error(ERROR_MESSAGE.PRODUCT.ERR_SEARCH_NOT_FOUND);
+        }
+        let objUpdate = await Product.findOne({
+            where: {
+                id: data.id,
+            }
+        })
+        if (!objUpdate) {
+            throw new Error(ERROR_MESSAGE.PRODUCT.ERR_SEARCH_NOT_FOUND)
+        }
+        let dataUpdate = {
+
+        }
+        if(data.sale){
+            dataUpdate.sale = data.sale
+        }
+        console.log(dataUpdate)
+        return objUpdate.update(dataUpdate)
     }
     async updateProduct(data,encodeUIR) {
         console.log('dataupdate',data)

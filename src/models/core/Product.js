@@ -57,6 +57,11 @@ const attributes = {
         allowNull: true,
         defaultValue: null
     },
+    sale: {
+        type: DataTypes.INTEGER(10),
+        allowNull: true,
+        defaultValue: null
+    },
     description: {
         type: DataTypes.STRING(8000),
         allowNull: true,

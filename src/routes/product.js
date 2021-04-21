@@ -5,6 +5,7 @@ import { isAuth } from '../middlewares/auth';
 
 let routerApp = new Router();
 routerApp.post('/createProduct', Response(ProductController.createProduct));
+routerApp.post('/updateSaleProduct', Response(ProductController.updateSaleProduct));
 routerApp.get('/deleteProduct', Response(ProductController.deleteProduct));
 routerApp.get('/getProduct', Response(ProductController.getProduct));
 routerApp.post('/updateProduct', Response(ProductController.updateProduct));

@@ -10,6 +10,12 @@ class ProductController{
         console.log('999999999999999999',encodeUIR)
         return await MidProduct.createProduct(data,encodeUIR);
     }
+    async updateSaleProduct(req,res){
+
+        let data = req.body;
+        console.log('saleeeeeeeeeeeeeeeeeeeeeeeeee',data)
+        return await MidProduct.updateSaleProduct(data);
+    }
     async getProduct(req,res){
         let data = req.query;
         return await MidProduct.getProduct(data);
