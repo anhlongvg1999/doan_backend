@@ -37,6 +37,16 @@ const attributes = {
         allowNull: true,
         defaultValue: null
     },
+    quantity_sold :{
+        type: DataTypes.INTEGER(10),
+        allowNull: true,
+        defaultValue: null
+    },
+    number: {
+        type: DataTypes.INTEGER(10),
+        allowNull: true,
+        defaultValue: null
+    },
     createdAt: {
         type: DataTypes.DATE,
         allowNull: true

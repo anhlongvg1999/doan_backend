@@ -13,7 +13,7 @@ import { Op } from 'sequelize';
 export default class Size extends BaseModel {
 
     static association() {
-      // RolePermission.hasMany(Users, {as: 'users', foreignKey: 'role_id', hooks: true, onDelete: 'CASCADE', onUpdate : 'NO ACTION'});
+      
     }
 }
 

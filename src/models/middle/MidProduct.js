@@ -4,7 +4,6 @@ import { Op } from "sequelize";
 class MidProduct {
     async createProduct(data,product_img) {
         console.log('datacreateproducttttttttttttttttttt',data)
-        console.log('product_img',product_img)
         if (!data.productcode) {
             throw new Error(ERROR_MESSAGE.PRODUCT.ERR_REQUIRE_INPUT);
         }
@@ -18,7 +17,6 @@ class MidProduct {
             productmanufacturerId: data.productmanufacturerId,
             productcode: data.productcode,
             image: product_img,
-            number: data.number,
             sale: 0,
             quantity_sold: 0,
             priceold: data.priceold,
@@ -164,19 +162,23 @@ class MidProduct {
         }
     }
     async updateProductSize(product_id, listSize) {
+        console.log('listSizelistSize',listSize)
         const oldSize = await this.getSizeOfProduct(product_id);
         const oldSizeIds = oldSize.map(it => it.size_id);
         oldSize.forEach(it => {
-            if (!listSize.includes(it.size_id)) {
-                it.destroy();
-            }
+            listSize.map(item =>{
+                if (!item.size_id.includes(it.size_id)) {
+                    it.destroy();
+                }
+            })
+            
         })
 
         let insertNewSize = [];
         listSize.forEach(it => {
-            if (!oldSizeIds.includes(it)) {
+            if (!oldSizeIds.includes(it.size_id)) {
                 insertNewSize.push(
-                    this.addProductSize({ product_id, size_id: it })
+                    this.addProductSize({ product_id, size_id: it.size_id,number: it.number,quantity_sold : 0 })
                 )
             }
         })
