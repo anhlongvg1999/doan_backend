@@ -9,4 +9,5 @@ routerApp.post('/updateSaleProduct', Response(ProductController.updateSaleProduc
 routerApp.get('/deleteProduct', Response(ProductController.deleteProduct));
 routerApp.get('/getProduct', Response(ProductController.getProduct));
 routerApp.post('/updateProduct', Response(ProductController.updateProduct));
+routerApp.get('/getProductbyId', Response(ProductController.getProductbyId));
 export default routerApp;

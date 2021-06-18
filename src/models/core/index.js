@@ -2,7 +2,6 @@ export {default as User} from './User';
 export {default as Menu} from './Menu';
 export {default as Product} from './Product';
 export {default as ProductCategoryMapping} from './ProductCategoryMapping';
-export {default as Transport} from './Transport';
 export {default as ProductManufacturer} from './ProductManufacturer';
 export {default as Blog} from './Blog';
 export {default as BlogCategory} from './BlogCategory';

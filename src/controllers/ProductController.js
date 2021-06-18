@@ -20,6 +20,10 @@ class ProductController{
         let data = req.query;
         return await MidProduct.getProduct(data);
     }
+    async getProductbyId(req,res){
+        let data = req.query;
+        return await MidProduct.getproductbyid(data.id);
+    }
     async updateProduct(req,res){
         const dataUpload = await uploadMedia(req, res);
         let product_img = dataUpload ? req.protocol + '://' + req.get('host') +'/' + dataUpload.filename : '';

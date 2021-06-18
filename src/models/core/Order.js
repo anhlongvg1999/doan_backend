@@ -18,7 +18,12 @@ const attributes = {
         allowNull: true,
         defaultValue: null
     },
-    Price: {
+    UserId: {
+        type: DataTypes.STRING(255),
+        allowNull: true,
+        defaultValue: null
+    },
+    price: {
         type: DataTypes.INTEGER(),
         allowNull: true,
         defaultValue: null
@@ -47,10 +52,6 @@ const attributes = {
         type: DataTypes.STRING(255),
         allowNull: true,
         default: 0
-    },
-    modifiedDate: {
-        type: DataTypes.DATE,
-        allowNull: true
     },
     deliveryDate: {
         type: DataTypes.DATE,

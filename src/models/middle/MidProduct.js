@@ -104,7 +104,11 @@ class MidProduct {
         if(!objDelete){
             throw new Error(ERROR_MESSAGE.PRODUCT.ERR_SEARCH_NOT_FOUND)
         }
-        await this.updateProductSize(data.id, [])
+        await ProductSize.destroy({
+            where:{
+                product_id: data.id
+            }
+        })
         return await Product.destroy({
             where:{
                 id: data.id,
@@ -126,6 +130,11 @@ class MidProduct {
         }
         if (data.productmanufacturerId) {
             condition.productmanufacturerId = data.productmanufacturerId
+        }
+        if (data.sale) {
+            condition.sale = {
+                [Op.gte] : data.sale
+            }
         }
         let { page, limit } = data;
         page = page ? parseInt(page) : 1;
@@ -161,6 +170,25 @@ class MidProduct {
             total: total || 0,
         }
     }
+    // async getProductbyId(product_id){
+    //     let includeOpt = [
+    //         {
+    //             association: "productmanufacturer",
+    //             required: true,
+    //         },{
+    //             association:"productsize",
+    //             required: true,
+    //             include:{
+    //                 association:"size",
+    //                 required: false,
+    //             }
+    //         }
+    //     ];
+    //     return Product.findOne({
+    //         where:{id :product_id},
+    //         include : includeOpt
+    //     })
+    // }
     async updateProductSize(product_id, listSize) {
         console.log('listSizelistSize',listSize)
         const oldSize = await this.getSizeOfProduct(product_id);

@@ -34,7 +34,7 @@ class MidUser {
         }
 
         const token = await generateToken({userid: userData.id, email: userData.email});
-        return token;
+        return {token: token,user: userData};
     }
     async getUserByid(id) {
         let user = await User.findOne({
